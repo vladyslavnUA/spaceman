@@ -2,6 +2,17 @@ import random
 
 secretWord = list()
 
+def playAgain():
+    ''' A function that checks whether play wants to play again.'''
+    again = input("Would you like to play again? [y/n]")
+
+    if again in ['Y', 'y', 'ye', 'yeah', 'ok']:
+        playAgain = True
+    else:
+        playAgain = False
+        
+        
+
 def load_word():
     '''
     A function that reads a text file of words and randomly selects one to use as the secret word
@@ -46,7 +57,7 @@ def get_guessed_word(secretWord, lettersGuessed):
         if letter in lettersGuessed:
             alreadyGuessed.append(letter)
         else:
-            alreadyGuessed.append("_")
+            alreadyGuessed.append(" _ ")
     return alreadyGuessed
             
     
@@ -65,7 +76,9 @@ def get_guessed_word(secretWord, lettersGuessed):
     
     pass
 
-def is_guess_in_word(guess, secret_word):
+def is_guess_in_word(guess, secretWord):
+
+    
     '''
     A function to check if the guessed letter is in the secret word
 
@@ -77,6 +90,13 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
 
     '''
+
+    guess = input("Enter a letter: ")
+
+    if guess in secretWord:
+        print("the letter you guessed is in the word.")
+        print("the new word is now:
+    
     #TODO: check if the letter guess is in the secret word
 
     pass
@@ -84,7 +104,7 @@ def is_guess_in_word(guess, secret_word):
 
 
 
-def spaceman(secret_word):
+def spaceman(secretWord):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
 
@@ -92,7 +112,8 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
 
     '''
-
+    wordBank = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    tries = 26
 
     #TODO: show the player information about the game according to the project spec
 
@@ -110,5 +131,5 @@ def spaceman(secret_word):
 
 
 #These function calls that will start the game
-secret_word = load_word()
-spaceman(secret_word)
+secretWord = load_word()
+spaceman(secretWord)
